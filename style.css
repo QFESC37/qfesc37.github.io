@@ -9,20 +9,15 @@ body {
   background-color: #ede6d8;
   display: flex;
   flex-direction: column;
-  height: 150vh;
   margin: 0;
   font-size: 20px;
   font-family: 'Raleway';
   color: #777;
-  padding: 40px 20px;
 }
 
 #intro {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%; 
-  height: 100vh;
+  inset: 0;
   
   background: linear-gradient(180deg, #ede6d8, #efe7dc); 
   
@@ -60,7 +55,7 @@ body {
   border: none;
   background-color: #bfab96;
   color: #555;
-  cursor: poiter;
+  cursor: pointer;
 }
 
 #enterBtn:hover {
@@ -93,7 +88,7 @@ img {
   width: 100%;
   image-rendering: auto;
   -webkit-backface-visibility: hidden;
-  boxshadow: 0 12px 30 px rgba (0,0,0,0.15);
+  box-shadow: 0 12px 30 px rgba(0,0,0,0.15);
   border-radius: 12px;
 }
 
@@ -152,7 +147,7 @@ body {
 .sigil {
   margin-top: 28px;
   font-size: 18px;
-  color: rgba (0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.15);
 }
 
 .soft-divider {
