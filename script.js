@@ -196,3 +196,16 @@ setTimeout(() => {
 
   resetUI();
 });
+
+  const enterBtn = document.getElementById("enterBtn");
+  const intro = document.getElementById("intro");
+
+  enterBtn.addEventListener("click", () => {
+    intro.style.opacity = "0";
+    intro.style.pointerEvents = "none";
+  }, 600);
+});
+
+  #intro {
+    transition: opacity 0.6s ease;
+}
