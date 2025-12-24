@@ -191,7 +191,9 @@ body.night {
   background-color: #bba5c4;
 }
 
-body.night h1 {
+body.night h1,
+body.night #note,
+body.night #resetBtn {
   color: var(--night-title);
 }
 
