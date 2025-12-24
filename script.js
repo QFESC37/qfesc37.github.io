@@ -103,6 +103,18 @@ const cards = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
+  const intro = document.getElementById("intro");
+  const mainContent = document.getElementById("mainContent");
+
+setTimeout(() => {
+  intro.style.opacity = 0;
+
+setTimeout(() => {
+  intro.style.display = "none";
+  mainContent.style.display = "block";
+}, 2000);
+}, 2000);
+  
   const todayKey = new Date().toDateString();
 
   const cardImage = document.getElementById("cardImage");
@@ -110,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const drawBtn = document.getElementById("drawBtn");
   const resetBtn = document.getElementById("resetBtn");
   const hint = document.getElementById("hint");
+});
 
   function setBackground(isMetaphor) {
     document.body.style.background = isMetaphor
