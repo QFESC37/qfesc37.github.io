@@ -71,7 +71,7 @@ h1 {
   text-align: center;
   margin:  20px 0;
   font-size: 14px;
-  color: #777;
+  color: #999;
 }
 
 .container {
@@ -121,7 +121,7 @@ button:hover {
   margin-top: 20px;
   margin-bottom: 60px;
   font-size: 14px;
-  color: #888;
+  color: #999;
   text-align: center;
   padding-bottom: 50px;
 }
