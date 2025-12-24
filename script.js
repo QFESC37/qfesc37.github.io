@@ -104,16 +104,17 @@ const cards = [
 
 document.addEventListener("DOMContentLoaded", () => {
   const intro = document.getElementById("intro");
-  const mainContent = document.getElementById("mainContent");
+  const enterBtn = document.getElementById("enterBtn");
 
-setTimeout(() => {
-  intro.style.opacity = 0;
+  if (enterBtn && intro) {
+    enterBtn.addEventListener("click", () => {
+      intro.style.opacity = "0";
+      intro.style.pointerEvents = "none";
 
-setTimeout(() => {
-  intro.style.display = "none";
-  mainContent.style.display = "block";
-}, 2000);
-}, 2000);
+      setTimeout(() => {
+        intro.style.display = "none";
+      }, 600);
+    });
   
   const todayKey = new Date().toDateString();
 
