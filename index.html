@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CardWhisper - A Card a Day</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Raleway|Jost" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 </head>
-
 <body>
+
   <div id="intro">
     <h1>Welcome, my moonbeam ⏾</h1>
     <p class="intro-text">
@@ -17,9 +17,9 @@
       Some things are better felt than told.
     </p>
     <button id="enterBtn">Step inside</button>
-  </div>  
+  </div>
 
-  <div id="menu" style="display:none;">
+  <div id="menu">
     <div class="menu-grid">
       <button class="menu-item" id="menuCard">
         <img src="https://i.postimg.cc/gj7TQhGr/cardwhisper-png.png" alt="Daily Card">
@@ -34,19 +34,16 @@
         <span>Stay tuned</span>
       </button>
     </div>
-  </div> 
-        
-  <div id="mainContent" style="display:none;">
+  </div>
+
+  <div id="dailyCard" class="page">
     <div class="card-frame">
       <div class="container">
+        <button id="backToMenuCard" class="back-btn">← Menu</button>
         <h1>Daily Card</h1>
         <p class="intro">
           A small daily reminder that you're loved, even from afar.<br>
           Tap the button and receive a card.
-        </p>
-        <p class="whisper">
-          This space is yours.<br>
-          Come back whenever you need a little warmth.
         </p>
         <div class="sigil">✦</div>
         <img id="cardImage" />
@@ -63,26 +60,24 @@
     </div>
   </div>
 
-  <section id="whisperBox" class="page hidden">
+  <section id="whisperBox" class="page">
+    <button class="back-btn" id="backToMenuWhisper">← Menu</button>
     <div class="whisper-container">
       <h1>Whisper Box</h1>
       <p class="whisper-sub">A question meant to be asked softly.</p>
       <div id="questionBox" class="question-box">
         <p id="questionText">Tap when you are ready.</p>
       </div>
-
+      <button id="revealBtn">Reveal a Question</button>
       <div class="comment-form">
         <input type="text" id="nameInput" placeholder="Your name (optional)">
         <textarea id="messageInput" placeholder="Type your whisper here..."></textarea>
         <button id="submitComment">Send</button>
       </div>
-
       <div id="commentsList" class="comments-list"></div>
     </div>
   </section>
 
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="script.js"></script>
-</body> 
+</body>
 </html>
