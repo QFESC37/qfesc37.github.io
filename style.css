@@ -66,6 +66,13 @@ h1 {
   font-size: 24px;
 }
 
+.note {
+  text-align: center;
+  margin:  20px 0;
+  font-size: 14px;
+  color: #999;
+}
+
 .note.is-active {
   text-align: center;
   margin:  20px 0;
@@ -75,9 +82,9 @@ h1 {
 }
 
 @keyframes colorFade {
-  0% { opacity: 0.7; }
+  0% { opacity: 0.3; }
   50% { opacity: 1; }
-  100% { opacity: 0.7; }
+  100% { opacity: 0.3; }
 }
 
 .container {
