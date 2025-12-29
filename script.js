@@ -205,15 +205,12 @@ const questions = [
   "Are you more of a blanket person or a pillow person?"
 ];
 
-];
 
 document.addEventListener("DOMContentLoaded", () => {
   const intro = document.getElementById("intro");
   const enterBtn = document.getElementById("enterBtn");
   const menu = document.getElementById("menu");
   const menuCard = document.getElementById("menuCard");
-  const menuQuestion = document.getElementById("menuQuestion");
-  const menuBlank = document.getElementById("menuBlank"); // Reserved
   const mainContent = document.getElementById("mainContent");
   const backToMenu = document.getElementById("backToMenu");
 
@@ -241,7 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
     hint.textContent = "";
     drawBtn.style.display = "inline-block";
     resetBtn.style.display = "none";
-    whisper.style.display = "none";
     setBackground(false);
   }
 
@@ -254,6 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
   enterBtn.addEventListener("click", () => {
     intro.style.opacity = "0";
     intro.style.pointerEvents = "none";
+
     setTimeout(() => {
       intro.style.display = "none";
       menu.style.display = "flex";
@@ -262,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuCard.addEventListener("click", () => {
     menu.style.display = "none";
-    mainContent.style.display = "block";
+    mainContent.style.display = "flex";
     resetUI();
 
     if (savedIndex !== null) {
@@ -280,33 +277,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  menuQuestion.addEventListener("click", () => {
-    menu.style.display = "none";
-    mainContent.style.display = "block";
-    resetUI();
-
-    const randomQ = questions[Math.floor(Math.random() * questions.length)];
-    whisper.textContent = randomQ;
-    whisper.style.display = "block";
-
-    const input = document.createElement("textarea");
-    input.placeholder = "Type your answer here...";
-    input.style.width = "80%";
-    input.style.margin = "12px auto";
-    input.style.display = "block";
-    input.style.height = "100px";
-    mainContent.appendChild(input);
-
-    resetBtn.style.display = "inline-block";
-  });
-
   backToMenu.addEventListener("click", () => {
     mainContent.style.display = "none";
     menu.style.display = "flex";
     setBackground(false);
-
-    const textarea = mainContent.querySelector("textarea");
-    if (textarea) textarea.remove();
   });
 
   drawBtn.addEventListener("click", () => {
@@ -327,8 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
   resetBtn.addEventListener("click", () => {
     localStorage.removeItem(todayKey);
     resetUI();
-    const textarea = mainContent.querySelector("textarea");
-    if (textarea) textarea.remove();
+    note.classList.remove("is-active");
   });
 
   resetUI();
