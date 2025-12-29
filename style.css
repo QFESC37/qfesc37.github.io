@@ -80,12 +80,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: none;
+  background: transparent;
+  padding: 0;
   border: none;
   cursor: pointer;
 
 .menu-item img {
-  width: 110px;
+  display: block;
+  width: 100px;
+  height: auto;
   margin-bottom: 8px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -148,6 +151,12 @@ h1 {
   50% { opacity: 1; }
   100% { opacity: 0.3; }
 }
+
+ #mainContent {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
 
 .container {
   position: relative;
