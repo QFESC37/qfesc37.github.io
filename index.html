@@ -79,6 +79,36 @@
   this is my way of reaching you.
 </p>    
 </div>
+
+<section id="whisperBox" class="page hidden">
+  <button class="back-btn" onclick="goToMenu()">← Menu</button>
+
+  <div class="whisper-container">
+    <h1>Whisper Box</h1>
+    <p class="whisper-sub">
+      A question meant to be asked softly.
+    </p>
+
+    <div id="questionBox" class="question-box">
+      <p id="questionText">Tap when you are ready.</p>
+    </div>
+
+    <button id="revealBtn" onclick="revealQuestion()">
+      Reveal a Question
+    </button>
+
+    <div id="formWrapper" class="form-wrapper hidden">
+      <iframe
+        src="YOUR_GOOGLE_FORM_EMBED_URL"
+        width="100%"
+        height="420"
+        frameborder="0"
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+  
 <script src="script.js"></script>
 </body> 
 </html>
