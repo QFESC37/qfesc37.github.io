@@ -102,11 +102,118 @@ const cards = [
                     
 ];
 
+const questions = [
+  "What part of yourself do you think people misunderstand the most?",
+  "When you feel overwhelmed, what helps you feel grounded again?",
+  "What does feeling safe with someone actually look like for you?",
+  "Is there a side of you that you rarely show but wish someone would notice?",
+  "What kind of silence feels comfortable to you?",
+  "What makes you feel most secure in a relationship, even without words?",
+  "When you start to worry about losing someone, what thoughts usually come first?",
+  "How do you usually cope with fear? Do you talk, withdraw, or overthink quietly?",
+  "What reassurance feels genuine to you, and what kind feels overwhelming?",
+  "What do you need from someone when you’re emotionally tired?",
+  "When something hurts you, what’s the easiest way for you to talk about it?",
+  "What makes you feel heard in a conversation?",
+  "Are there things you need time to process before talking about them?",
+  "How do you usually show care without realizing it yourself?",
+  "What kind of emotional support feels too much for you?",
+  "What does emotional closeness mean to you?",
+  "What makes a connection feel real, not just intense?",
+  "How do you know when someone truly matters to you?",
+  "What kind of relationship dynamic makes you feel at ease?",
+  "What helps you trust someone over time?",
+  "When do you feel most like yourself?",
+  "What kind of presence feels comforting to you?",
+  "Is there something about you that you’re still learning to accept?",
+  "What makes you feel appreciated in small ways?",
+  "What do you hope people understand about your heart?",
+  "If you could be a cat for one day, what would you spend most of your time doing?",
+  "If clouds had feelings, what mood do you think they’re in most of the time?",
+  "If your laughter had a sound effect, what would it be?",
+  "If your shadow could talk, what kind of personality would it have?",
+  "If you could step into an imaginary world, what would it look and feel like?",
+  "What kind of place makes you feel quietly happy without needing to explain why?",
+  "If you could keep one moment forever, what kind of moment would it be?",
+  "Do you think the night or the morning understands you better?",
+  "If your heart had a favorite season, which one would it be?",
+  "What small thing instantly makes your day better?",
+  "When you’re tired, what kind of comfort feels best to you?",
+  "What kind of silence do you like?",
+  "What’s something simple you never get bored of?",
+  "How do you usually show care without realizing you’re doing it?",
+  "If you could rename the color of the sky, what would you call it?",
+  "If your thoughts were a place, would it be noisy or quiet?",
+  "What kind of stories do you naturally pay attention to?",
+  "If happiness were a sound, would it be loud or soft?",
+  "If you could be any animal for a day, what would you be and why?",
+  "If you woke up as a child again for one day, what’s the first thing you’d do?",
+  "What do you think plants feel when it rains?",
+  "If your mood today were a weather, what would it be?",
+  "If your thoughts had a color right now, what color would they be?",
+  "If you could talk to your reflection, what would it say back?",
+  "If food could talk, which dish would be the nicest to you?",
+  "If you had a personal theme song, what kind of vibe would it have?",
+  "If your laughter were a place, where would it be?",
+  "If you could live inside a painting or a movie scene, which one?",
+  "What do you think dreams are really trying to do?",
+  "If the moon could answer one question, what would you ask?",
+  "If time paused for an hour just for you, how would you spend it?",
+  "If you were a small object on a desk, what would you be?",
+  "When do you feel most like yourself?",
+  "What kind of comfort works best for you when you’re overwhelmed?",
+  "What emotion do you feel but rarely talk about?",
+  "What helps you feel understood without words?",
+  "What kind of presence do you find calming?",
+  "What do you usually need more of when you’re tired?",
+  "What’s something you wish people noticed about you?",
+  "How do you know when you trust someone?",
+  "What helps you come back to yourself after a hard day?",
+  "What does emotional closeness mean to you?",
+  "What small habit brings you comfort?",
+  "What kind of day feels like a good day to you?",
+  "What do you do when you need to recharge?",
+  "What’s something you enjoy more than most people expect?",
+  "Are you more of a listener or a talker?",
+  "What kind of routine makes you feel grounded?",
+  "What usually makes you laugh without trying?",
+  "What’s a simple pleasure you never get bored of?",
+  "How do you usually show care for others?",
+  "What kind of compliment stays with you?",
+  "What do you value most in daily life?",
+  "What kind of environment helps you focus?",
+  "What makes you feel quietly proud of yourself?",
+  "What do you think makes a connection feel real?",
+  "How do you usually know when something matters to you?",
+  "What do you think love is made of?",
+  "What helps you stay hopeful?",
+  "What kind of questions do you enjoy being asked?",
+  "What does being seen feel like to you?",
+  "What kind of bond feels meaningful to you?",
+  "What do you believe people need more of?",
+  "What makes life feel softer to you?",
+  "What do you hope never changes about you?",
+  "What kind of connection do you want to keep nurturing?",
+  "If you suddenly turned into a potato, what do you think your personality would be like?",
+  "If your socks had feelings, would they think you’re a good owner?",
+  "If you had to name a new flavor of water, what would it be?",
+  "If you were a background character in a movie, what would people remember you for?",
+  "What snack do you suddenly crave at night?",
+  "Do you prefer warm drinks or cold drinks?",
+  "What’s a smell that instantly makes you feel good?",
+  "If you could nap anywhere right now, where would it be?",
+  "Are you more of a blanket person or a pillow person?"
+];
+
+];
+
 document.addEventListener("DOMContentLoaded", () => {
   const intro = document.getElementById("intro");
   const enterBtn = document.getElementById("enterBtn");
   const menu = document.getElementById("menu");
   const menuCard = document.getElementById("menuCard");
+  const menuQuestion = document.getElementById("menuQuestion");
+  const menuBlank = document.getElementById("menuBlank"); // Reserved
   const mainContent = document.getElementById("mainContent");
   const backToMenu = document.getElementById("backToMenu");
 
@@ -134,6 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
     hint.textContent = "";
     drawBtn.style.display = "inline-block";
     resetBtn.style.display = "none";
+    whisper.style.display = "none";
     setBackground(false);
   }
 
@@ -146,10 +254,9 @@ document.addEventListener("DOMContentLoaded", () => {
   enterBtn.addEventListener("click", () => {
     intro.style.opacity = "0";
     intro.style.pointerEvents = "none";
-
     setTimeout(() => {
       intro.style.display = "none";
-      menu.style.display = "block";
+      menu.style.display = "flex";
     }, 600);
   });
 
@@ -173,10 +280,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  menuQuestion.addEventListener("click", () => {
+    menu.style.display = "none";
+    mainContent.style.display = "block";
+    resetUI();
+
+    const randomQ = questions[Math.floor(Math.random() * questions.length)];
+    whisper.textContent = randomQ;
+    whisper.style.display = "block";
+
+    const input = document.createElement("textarea");
+    input.placeholder = "Type your answer here...";
+    input.style.width = "80%";
+    input.style.margin = "12px auto";
+    input.style.display = "block";
+    input.style.height = "100px";
+    mainContent.appendChild(input);
+
+    resetBtn.style.display = "inline-block";
+  });
+
   backToMenu.addEventListener("click", () => {
     mainContent.style.display = "none";
-    menu.style.display = "block";
+    menu.style.display = "flex";
     setBackground(false);
+
+    const textarea = mainContent.querySelector("textarea");
+    if (textarea) textarea.remove();
   });
 
   drawBtn.addEventListener("click", () => {
@@ -197,6 +327,8 @@ document.addEventListener("DOMContentLoaded", () => {
   resetBtn.addEventListener("click", () => {
     localStorage.removeItem(todayKey);
     resetUI();
+    const textarea = mainContent.querySelector("textarea");
+    if (textarea) textarea.remove();
   });
 
   resetUI();
