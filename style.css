@@ -63,32 +63,42 @@ body {
 
 #menu {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .menu-grid {
-  display: grid;
+  display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 36px;
   align-items: center;
 }
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
 
 .menu-item img {
   width: 110px;
   margin-bottom: 8px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .menu-item span {
-  display: block;
+  margin-top: -4px;
   font-size: 14px;
   color: #555;
 }
 
 .menu-item:hover img {
+  transform: translateY(-4px;)
   opacity: 1;
-  transform: translateY(-2px);
 }
 
 .menu-item:hover span {
@@ -111,7 +121,7 @@ h1 {
 .back-btn {
   position: absolute;
   top: 20px;
-  left: 10px;
+  left: 0px;
   margin: 20px 0;
   background: none;
   border: none;
