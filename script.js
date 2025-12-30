@@ -207,7 +207,6 @@ const cards = [
                     
 ];
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const intro = document.getElementById("intro");
   const enterBtn = document.getElementById("enterBtn");
@@ -228,6 +227,61 @@ document.addEventListener("DOMContentLoaded", () => {
   const revealBtn = document.getElementById("revealBtn");
   const questionText = document.getElementById("questionText");
 
+  const SCRIPT_URL = "https://script.google.com/macros/u/1/s/AKfycbyZOCs3fyBDLmFYj2mo9uj7GwugwUVv9JVDNvWXTglhKr5IYbpiLyocqNP216CpOZuFOA/exec";
+  
+  let currentQuestion = "";
+
+ revealBtn.addEventListener("click", () => {
+    const idx = Math.floor(Math.random() * questions.length);
+    currentQuestion = questions[idx];
+    questionText.textContent = currentQuestion;
+
+    const feedback = document.createElement("p")
+    feedback.textContent = "Your question is ready!";
+    feedback.style.color = "#555";
+    feedback.style.marginTop = "6px";
+
+    revealBtn.parentNode.insertBefore(feedback, revealBtn.nextSibling);
+
+    setTimeout(() => feedback.remove(), 2500);
+  });
+
+  const submitComment = document.getElementById("submitComment");
+  const nameInput = document.getElementById("nameInput");
+  const messageInput = document.getElementById("messageInput");
+
+  submitComment.addEventListener("click", () => {
+    const name = nameInput.value.trim() || "Anonymous";
+    const answer = messageInput.value.trim();
+    if (!answer) return;
+
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        question: currentQuestion || "(No question revealed)",
+        answer: answer,
+        name: name
+      })
+    }).then(() => {
+
+      const feedback = document.createElement("p");
+      feedback.textContent = "Your whisper has been sent!";
+      feedback.style.fontSize = "13px";
+      feedback.style.color = "#555";
+      feedback.style.marginTop = "6px";
+      submitComment.parentNode.insertBefore(feedback, submitComment.nextSibling);
+      setTimeout(() => feedback.remove(), 3000);
+
+      messageInput.value = "";
+      nameInput.value = "";
+    }).catch(err => {
+      console.error("Error sending to Google Script:", err);
+    });
+  });
+  
   enterBtn.addEventListener("click", () => {
     intro.style.opacity = "0";
     intro.style.pointerEvents = "none";
@@ -236,12 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
       menu.style.display = "flex";
     }, 600);
   });
-
- revealBtn.addEventListener("click", () => {
-    const idx = Math.floor(Math.random() * questions.length);
-    questionText.textContent = questions[idx]; 
-  });
-
+  
   menuCard.addEventListener("click", () => {
     menu.style.display = "none";
     dailyCard.style.display = "flex";
