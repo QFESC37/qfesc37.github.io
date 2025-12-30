@@ -292,28 +292,28 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   menuCard.addEventListener("click", () => {
-    menu.style.display = "none";
-    whisperBox.style.display = "none";
-    dailyCard.style.display = "flex";
-  });
+  showPage(dailyCard);
+});
 
-  backToMenuCard.addEventListener("click", () => {
-    dailyCard.style.display = "none";
-    menu.style.display = "flex";
-    whisperBox.style.display = "none";    
-    document.body.classList.remove("night");  
-  });
+backToMenuCard.addEventListener("click", () => {
+  document.body.classList.remove("night");
+  showPage(menu);
+});
 
-  menuQuestion.addEventListener("click", () => {
-    menu.style.display = "none";
-    whisperBox.style.display = "flex";
-  });
+menuQuestion.addEventListener("click", () => {
+  showPage(whisperBox);
+});
 
-  backToMenuWhisper.addEventListener("click", () => {
-    whisperBox.style.display = "none";
-    menu.style.display = "flex";
-  });
+backToMenuWhisper.addEventListener("click", () => {
+  showPage(menu);
+});
 
+  function showPage(page) {
+    const pages = [menu, dailyCard, whisperBox];
+    pages.forEach(p => p.style.display = "none");
+    page.style.display = "flex";
+  }
+    
   function resetDailyCard() {
     cardImage.style.display = "none";
     note.textContent = "";
