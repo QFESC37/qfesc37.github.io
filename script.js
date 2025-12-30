@@ -256,10 +256,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function resetDailyCard() {
     cardImage.style.display = "none";
-    note.textContent = "Your card for today.";
+    note.textContent = "";
     note.style.display = "block";
-    hint.textContent = "";
-    hint.style.display = "none";
     drawBtn.style.display = "inline-block";
     resetBtn.style.display = "none";
     document.body.classList.remove("night");
@@ -271,6 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cardImage.style.display = "block";
     note.textContent = "You've Received Today's Card";
     hint.textContent = "Come back tomorrow for a new card.";
+    hint.style.display = "block";   
     drawBtn.style.display = "none";
     resetBtn.style.display = "inline-block";
     if(idx >= 75) document.body.classList.add("night");
