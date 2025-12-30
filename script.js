@@ -232,8 +232,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const messageInput = document.getElementById("messageInput");
   const commentsList = document.getElementById("commentsList");
 
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyZOCs3fyBDLmFYj2mo9uj7GwugwUVv9JVDNvWXTglhKr5IYbpiLyocqNP216CpOZuFOA/exec";
-  
   let currentQuestion = "";
 
   function showPage(page) {
@@ -242,31 +240,24 @@ document.addEventListener("DOMContentLoaded", () => {
     page.style.display = "flex";
   }
 
-  function testWriteDirect() {
-  const ss = SpreadsheetApp.openById("1XUI_zQZh52o-13pN_d5ZYghphrXUUykEq55LluY6BoY");
-  const sheet = ss.getSheetByName("Whispers");
-  sheet.appendRow([new Date(), "TEST QUESTION", "TEST ANSWER", "TEST NAME"]);
-}
   resetDailyCard();
-  showPage(intro); 
-  dailyCard.style.display = "none";
-  whisperBox.style.display = "none";
-  menu.style.display = "none";
+  showPage(intro);
 
   enterBtn.addEventListener("click", () => {
     intro.style.opacity = "0";
     intro.style.pointerEvents = "none";
-
-    setTimeout(() => {
-      showPage(menu);
-    }, 600);
+    setTimeout(() => showPage(menu), 600);
   });
 
   menuCard.addEventListener("click", () => showPage(dailyCard));
+  menuQuestion.addEventListener("click", () => showPage(whisperBox));
+
   backToMenuCard.addEventListener("click", () => {
     document.body.classList.remove("night");
     showPage(menu);
   });
+
+  backToMenuWhisper.addEventListener("click", () => showPage(menu));
 
   function resetDailyCard() {
     cardImage.style.display = "none";
@@ -283,16 +274,13 @@ document.addEventListener("DOMContentLoaded", () => {
     cardImage.style.display = "block";
     note.textContent = "You've Received Today's Card";
     hint.textContent = "Come back tomorrow for a new card.";
-    hint.style.display = "block";   
+    hint.style.display = "block";
     drawBtn.style.display = "none";
     resetBtn.style.display = "inline-block";
-    if(idx >= 75) document.body.classList.add("night");
+    if (idx >= 75) document.body.classList.add("night");
   });
 
   resetBtn.addEventListener("click", resetDailyCard);
-
-  menuQuestion.addEventListener("click", () => showPage(whisperBox));
-  backToMenuWhisper.addEventListener("click", () => showPage(menu));
 
   revealBtn.addEventListener("click", () => {
     const idx = Math.floor(Math.random() * questions.length);
@@ -307,41 +295,59 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => feedback.remove(), 2500);
   });
 
+  function saveWhisper({ question, answer, name }) {
+    const key = "whisperBoxLogs";
+    const logs = JSON.parse(localStorage.getItem(key)) || [];
+
+    logs.push({
+      timestamp: new Date().toISOString(),
+      question,
+      answer,
+      name
+    });
+
+    localStorage.setItem(key, JSON.stringify(logs));
+  }
+
   submitComment.addEventListener("click", (e) => {
     e.preventDefault();
 
-    console.log("Submit clicked");
-    
     const name = nameInput.value.trim() || "Anonymous";
     const answer = messageInput.value.trim();
     if (!answer) return;
+
+    saveWhisper({
+      question: currentQuestion || "(No question revealed)",
+      answer,
+      name
+    });
 
     const div = document.createElement("div");
     div.textContent = `${name}: ${answer}`;
     commentsList.prepend(div);
 
-    fetch(SCRIPT_URL, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        question: currentQuestion || "(No question revealed)",
-        answer: answer,
-        name: name
-      })
-    }).then(() => {
-      const feedback = document.createElement("p");
-      feedback.textContent = "Your whisper has been sent!";
-      feedback.style.fontSize = "13px";
-      feedback.style.color = "#555";
-      feedback.style.marginTop = "6px";
-      submitComment.parentNode.insertBefore(feedback, submitComment.nextSibling);
-      setTimeout(() => feedback.remove(), 3000);
-    }).catch(err => {
-      console.error("Error sending to Google Script:", err);
-    });
+    showSoftFeedback("Your whisper has been kept.");
 
     messageInput.value = "";
     nameInput.value = "";
   });
 
+  function showSoftFeedback(text) {
+    const el = document.createElement("div");
+    el.textContent = text;
+    el.style.cssText = `
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      z-index: 9999;
+    `;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 2200);
+  }
 });
