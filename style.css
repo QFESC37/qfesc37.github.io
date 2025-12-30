@@ -60,3 +60,6 @@ body.night #resetBtn:hover { background-color:#b59bc1; }
 .comment-form { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
 .comment-form button { max-width: 80px; padding: 6px 14px; font-size: 13px; margin: 10px auto 0; }
 .comments-list { margin-top: 20px; max-height: 200px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; text-align: left; font-size: 14px; }
+
+.whisper-feedback { margin-top: 12px; font-size: 13px; color: #999; opacity: 0; transition:  opacity 0.6s ease; }
+.whisper-feedback.show { opacity: 1; }
