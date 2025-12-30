@@ -232,6 +232,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const messageInput = document.getElementById("messageInput");
   const commentsList = document.getElementById("commentsList");
 
+  const openLogBtn = document.getElementById("openLogBtn");
+  const closeLogBtn = document.getElementById("closeLogBtn");
+  const clearLogBtn = document.getElementById("clearLogBtn");
+  const logModal = document.getElementById("logModal");
+  const logContent = document.getElementById("logContent");
+
   let currentQuestion = "";
 
   function showPage(page) {
@@ -351,3 +357,41 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => el.remove(), 2200);
   }
 });
+
+  function renderLogs() {
+    const logs = JSON.parse(localStorage.getItem("whisperBoxLogs")) || [];
+    logContent.innerHTML = "";
+
+  if (logs.length === 0) {
+    logContent.innerHTML = "<p style='text-align:center;color:#999;'>No whispers yet.</p>";
+    return;
+  }
+
+  logs.slice().reverse().forEach(log => {
+    const div = document.createElement("div");
+    div.className = "log-item";
+    div.innerHTML = `
+      <time>${new Date(log.timestamp).toLocaleString()}</time>
+      <div class="log-question">“${log.question}”</div>
+      <div class="log-answer"><strong>${log.name}:</strong> ${log.answer}</div>
+    `;
+    logContent.appendChild(div);
+  });
+}
+
+openLogBtn.addEventListener("click", () => {
+  renderLogs();
+  logModal.style.display = "flex";
+});
+
+closeLogBtn.addEventListener("click", () => {
+  logModal.style.display = "none";
+});
+
+clearLogBtn.addEventListener("click", () => {
+  if (confirm("Clear all whispers?")) {
+    localStorage.removeItem("whisperBoxLogs");
+    renderLogs();
+  }
+});
+
