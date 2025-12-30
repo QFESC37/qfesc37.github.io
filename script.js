@@ -350,7 +350,7 @@ document.addEventListener("DOMContentLoaded", () => {
       color: #fff;
       padding: 8px 14px;
       border-radius: 12px;
-      font-size: 0.9rem;
+      font-size: 0.65rem;
       z-index: 9999;
     `;
     document.body.appendChild(el);
