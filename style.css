@@ -68,20 +68,8 @@ body.night #resetBtn:hover { background-color:#b59bc1; }
 .log-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: none; align-items: center; justify-content: center; z-index: 9999; }
 .log-panel { background: #fff; width: min(90%, 420px); max-height: 70vh; border-radius: 18px padding: 18px; display: flex; flex-direction: column; }
 .log-panel h2 { font-size: 1.1rem; margin-bottom: 12px; text-align: center; font-weight: 500; }
-
-.log-content {
-  flex: 1;
-  overflow-y: auto;
-  font-size: 0.65rem;
-  line-height: 1.4;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  padding: 10px 0;
-}
-
-.log-item {
-  margin-bottom: 14px;
-}
+.log-content { flex: 1; overflow-y: auto; font-size: 0.85rem; line-height: 1.4; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 10px 0; }
+.log-item { margin-bottom: 14px; }
 
 .log-item time {
   display: block;
