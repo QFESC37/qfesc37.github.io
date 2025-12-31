@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentQuestion = "";
 
   function showPage(page) {
-    const pages = [menu, dailyCard, whisperBox, intro];
+    const pages = [intro, menu, dailyCard, whisperBox, festival-section];
     pages.forEach(p => p.style.display = "none");
     page.style.display = "flex";
   }
