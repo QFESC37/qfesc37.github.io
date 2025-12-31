@@ -248,8 +248,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentQuestion = "";
 
   function showPage(page) {
-    const pages = [intro, menu, dailyCard, whisperBox, festival];
-    pages.forEach(p => { p.style.display = "none"; p.style.opacity = "1"; });
+    const pages = [menu, dailyCard, whisperBox, festival];
+    pages.forEach(p => { p.style.display = "none"; p.style.pointerEvents = "auto"; p.style.opacity = "1"; });
     page.style.display = "flex";
   }
 
@@ -260,6 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
   enterBtn.addEventListener("click", () => {
     intro.style.opacity = "0";
     intro.style.pointerEvents = "none";
+    intro.style.display = "none";
     setTimeout(() => showPage(menu), 600);
   });
 
