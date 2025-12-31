@@ -414,7 +414,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const isOpen = !box.classList.contains("hidden");
 
       document.querySelectorAll(".messageBox").forEach(b => b.classList.add("hidden"));
-      document.querySelectorAll(".festival-btn").forEach(b => b.textContent = "Open Letter");
+      document.querySelectorAll(".festival-btn").forEach(b => b.textContent = "Unfold Letter");
 
       if (!isOpen) {
         box.classList.remove("hidden");
