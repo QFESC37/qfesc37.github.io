@@ -118,7 +118,7 @@ body.night #resetBtn:hover { background-color:#b59bc1; }
   align-items: center;
 }
 
-.festival-card {
+.letter-wrap {
   background: rgba(255,255,255,0.6);
   border-radius: 16px;
   padding: 20px;
@@ -147,7 +147,7 @@ body.night #resetBtn:hover { background-color:#b59bc1; }
   margin-top: 28px;
   padding: 22px;
   border-radius: 12px;
-  background: ##e3dcdc;
+  background: #e3dcdc;
   animation: fadeIn 0.6s ease;
 }
 
