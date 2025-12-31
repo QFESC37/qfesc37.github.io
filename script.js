@@ -217,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const whisperBox = document.getElementById("whisperBox");
   const backToMenuCard = document.getElementById("backToMenuCard");
   const backToMenuWhisper = document.getElementById("backToMenuWhisper");
+  const backToMenuFestival = document.getElementById("backToMenuFestival");
 
   const cardImage = document.getElementById("cardImage");
   const drawBtn = document.getElementById("drawBtn");
@@ -238,6 +239,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const logModal = document.getElementById("logModal");
   const logContent = document.getElementById("logContent");
 
+  const openMessageBtn = document.getElementById("openMessageBtn");
+  const messageBox = document.getElementById("messageBox");
+
   let currentQuestion = "";
 
   function showPage(page) {
@@ -257,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuCard.addEventListener("click", () => showPage(dailyCard));
   menuQuestion.addEventListener("click", () => showPage(whisperBox));
-
+  
   backToMenuCard.addEventListener("click", () => {
     document.body.classList.remove("night");
     showPage(menu);
@@ -265,6 +269,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   backToMenuWhisper.addEventListener("click", () => showPage(menu));
 
+  backToMenuFestival.addEventListener("click", () => {
+  showPage(menu);
+});
+  
   function resetDailyCard() {
     cardImage.style.display = "none";
     note.textContent = "";
@@ -395,3 +403,16 @@ clearLogBtn.addEventListener("click", () => {
   }
 });
 
+let isOpen = false;
+
+openMessageBtn.addEventListener("click", () => {
+  isOpen = !isOpen;
+
+  if (isOpen) {
+    messageBox.classList.remove("hidden");
+    openMessageBtn.textContent = "Fold the Letter";
+  } else {
+    messageBox.classList.add("hidden");
+    openMessageBtn.textContent = "Open New Year Message";
+  }
+});
