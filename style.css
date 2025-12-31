@@ -119,7 +119,7 @@ body.night #resetBtn:hover { background-color:#d1c7d6; }
   text-align: center;
 }
 
-.festival h2 {
+.festival-title {
   font-size: 22px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -127,7 +127,7 @@ body.night #resetBtn:hover { background-color:#d1c7d6; }
   text-align: center;
 }
 
-.festival h2::after {
+.festival-title::after {
   content: "✦";
   display: block;
   margin-top: 10px;
