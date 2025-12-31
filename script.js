@@ -241,7 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const logModal = document.getElementById("logModal");
   const logContent = document.getElementById("logContent");
 
-  const openMessageBtn = document.getElementById("openMessageBtn");
   const messageBox = document.getElementById("messageBox");
 
   
