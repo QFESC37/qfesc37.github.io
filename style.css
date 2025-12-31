@@ -113,6 +113,7 @@ body.night #resetBtn:hover { background-color:#d1c7d6; }
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   gap: 32px;
   font-size: 18px;
   text-align: center;
@@ -122,8 +123,6 @@ body.night #resetBtn:hover { background-color:#d1c7d6; }
   font-size: 22px;
   font-weight: 500;
   letter-spacing: 1px;
-  margin-bottom: 8px;
-  position: relative;
 }
 
 .festival h2::after {
@@ -136,11 +135,12 @@ body.night #resetBtn:hover { background-color:#d1c7d6; }
 
 .festival-title {
   margin-bottom: 24px;
+  text-align: center;
 }
 
 .festival-list {
   width: 100%;
-  max-width: 420px;
+  max-width: 550px;
   display: flex;
   flex-direction: column;
   gap: 24px;
