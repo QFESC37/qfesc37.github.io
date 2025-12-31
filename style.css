@@ -20,7 +20,7 @@ body { font-family:'Raleway'; background:#ede6d8; color:#777; font-size:20px; tr
 .menu-item span { font-size:14px; color:#555; }
 .menu-item:hover { transform:translateY(-4px); box-shadow:0 6px 12px rgba(0,0,0,0.15); background:#e0dfdc; }
 .menu-item:hover span { color:#333; }
-.menu-item:last-child { margin-bottom:80px; }
+.menu-item:last-child { margin-bottom:120px; }
 .page.active, #menu.actve, .festival-section.active { display: flex; }
 
 .back-btn { position:absolute; top:20px; left:16px; background:none; border:none; color:#777; font-size:14px; cursor:pointer; }
