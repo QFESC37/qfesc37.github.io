@@ -244,11 +244,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const openMessageBtn = document.getElementById("openMessageBtn");
   const messageBox = document.getElementById("messageBox");
 
+  function renderLogs() {
+    const logs = JSON.parse(localStorage.getItem("whisperBoxLogs")) || [];
+    logContent.innerHTML = "";
+
+  if (logs.length === 0) {
+    logContent.innerHTML = "<p style='text-align:center;color:#999;'>No whispers yet.</p>";
+    return;
+  }
+
+  logs.slice().reverse().forEach(log => {
+    const div = document.createElement("div");
+    div.className = "log-item";
+    div.innerHTML = `
+      <time>${new Date(log.timestamp).toLocaleString()}</time>
+      <div class="log-question">“${log.question}”</div>
+      <div class="log-answer"><strong>${log.name}:</strong> ${log.answer}</div>
+    `;
+    logContent.appendChild(div);
+  });
+}
+
+openLogBtn.addEventListener("click", () => {
+  renderLogs();
+  logModal.style.display = "flex";
+});
+
+closeLogBtn.addEventListener("click", () => {
+  logModal.style.display = "none";
+});
+
+clearLogBtn.addEventListener("click", () => {
+  if (confirm("Clear all whispers?")) {
+    localStorage.removeItem("whisperBoxLogs");
+    renderLogs();
+  }
+});
+  
   let currentQuestion = "";
 
   function showPage(page) {
     const pages = [intro, menu, dailyCard, whisperBox, festival];
-    pages.forEach(p => { p.style.display = "none"; p.style.opaicty = "1"; });
+    pages.forEach(p => { p.style.display = "none"; p.style.opacity = "1"; });
     page.style.display = "flex";
   }
 
@@ -367,43 +404,6 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.body.appendChild(el);
     setTimeout(() => el.remove(), 2200);
-  }
-});
-
-  function renderLogs() {
-    const logs = JSON.parse(localStorage.getItem("whisperBoxLogs")) || [];
-    logContent.innerHTML = "";
-
-  if (logs.length === 0) {
-    logContent.innerHTML = "<p style='text-align:center;color:#999;'>No whispers yet.</p>";
-    return;
-  }
-
-  logs.slice().reverse().forEach(log => {
-    const div = document.createElement("div");
-    div.className = "log-item";
-    div.innerHTML = `
-      <time>${new Date(log.timestamp).toLocaleString()}</time>
-      <div class="log-question">“${log.question}”</div>
-      <div class="log-answer"><strong>${log.name}:</strong> ${log.answer}</div>
-    `;
-    logContent.appendChild(div);
-  });
-}
-
-openLogBtn.addEventListener("click", () => {
-  renderLogs();
-  logModal.style.display = "flex";
-});
-
-closeLogBtn.addEventListener("click", () => {
-  logModal.style.display = "none";
-});
-
-clearLogBtn.addEventListener("click", () => {
-  if (confirm("Clear all whispers?")) {
-    localStorage.removeItem("whisperBoxLogs");
-    renderLogs();
   }
 });
 
